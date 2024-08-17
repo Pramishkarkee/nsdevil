@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block base %}
+<div class="container mt-4">
+  <form method="post" action="{% url 'take-attendance' class_id=class_data.id %}">
+        {% csrf_token %}
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Roll Number</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Is Present</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in student %}
+    <tr>
+      <th scope="row">{{i.roll_number}}</th>
+      <td>{{i.user.fullname}}</td>
+      <td><input type="checkbox" name="attendance_{{ i.id }}" /></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    <input type="submit" class="btn btn-danger" value="Take Attendance">
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block base %}
+<div class="container mt-5">
+<!--<a href="{% url 'take-attendance' course_id=student.academic_class.id %d}">Take attendance</a>-->
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">RollNo</th>
+      <th scope="col">Name</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in attendance %}
+    <tr>
+      <td>{{i.student.roll_number}}</td>
+      <td>{{i.student.user.fullname}}</td>
+      <td>{{i.is_present}}</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}
