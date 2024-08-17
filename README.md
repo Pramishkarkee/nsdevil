@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Attendance System is designed to manage and track student attendance in academic classes. It provides functionalities to record attendance, generate reports, and visualize data. This system is built using Django and Django REST Framework (DRF), with features including a web-based interface, API endpoints, and data visualization.
+The Attendance System is designed to manage and track student attendance in academic classes. It provides functionalities to record attendance and visualize data. This system is built using Django and Django REST Framework (DRF), with features including a web-based interface, API endpoints, and data visualization.
 
 ## Features
 - **Attendance Recording**: Track attendance for students in various classes.
@@ -132,4 +132,4 @@ To integrate the visualizations, include Chart.js in your HTML templates and pas
 
 ## Contact
 
-For any questions or issues, please contact [karkipramish18@gmail.com](.
+For any questions or issues, please contact [karkipramish18@gmail.com].
