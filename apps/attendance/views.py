@@ -16,9 +16,7 @@ import json
 from django.utils import timezone
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import DashboardFilterSerializer
-from rest_framework import status
-from apps.user.permission import IsTeacherUser,IsStudentUser
+
 
 def logout_view(request):
     logout(request)
