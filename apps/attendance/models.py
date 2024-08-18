@@ -2,6 +2,8 @@ from django.db import models
 from apps.core.models import BaseModel
 from django.db.models import Max
 from apps.user.models import StudentUser,TeacherUser
+from django.core.exceptions import ValidationError
+
 
 class CourseName(BaseModel):
     name= models.CharField(max_length=255)
@@ -31,6 +33,17 @@ class Student(BaseModel):
         return f"{self.user.username} - {self.roll_number}"
 
     def save(self, *args, **kwargs):
+        if not self.roll_number:
+            self.roll_number = self.generate_roll_number()
+        if self.academic_class:
+            # Check the number of students in the academic class
+            student_count = Student.objects.filter(academic_class=self.academic_class).count()
+            min_student_count = self.academic_class.student_capacity
+            # Raise a validation error if the count is below the threshold
+            if student_count >= min_student_count:
+                raise ValidationError(
+                    f"Cannot save student. The academic class '{self.academic_class}' has fewer than {min_student_count} students.")
+
         if not self.roll_number:
             self.roll_number = self.generate_roll_number()
         super().save(*args, **kwargs)
